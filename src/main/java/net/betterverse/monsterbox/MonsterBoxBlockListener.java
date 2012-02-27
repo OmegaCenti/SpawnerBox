@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.CreatureType;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -85,6 +86,7 @@ public class MonsterBoxBlockListener implements Listener
     this.stringmobs.put("MagmaCube", new Integer(62));
     this.stringmobs.put("Snowman", new Integer(97));
   }
+  
   @EventHandler
   public void onBlockBreak(BlockBreakEvent event) {
     if ((!event.isCancelled()) && (event.getBlock().getType() == Material.MOB_SPAWNER) && 
@@ -105,6 +107,7 @@ public class MonsterBoxBlockListener implements Listener
       {
       }
   }
+  
   @EventHandler
   public void onBlockPlace(BlockPlaceEvent event)
   {
