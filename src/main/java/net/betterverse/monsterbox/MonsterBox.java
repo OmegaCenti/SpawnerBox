@@ -18,7 +18,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MonsterBox extends JavaPlugin implements Listener {
@@ -96,18 +95,17 @@ public class MonsterBox extends JavaPlugin implements Listener {
             }
 
             Block block = event.getBlock();
-            // Store its metadata
-            block.setMetadata("mob", new FixedMetadataValue(this, ((CreatureSpawner) block.getState()).getSpawnedType()
-                    .name()));
-            // Drop item
-            block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.MOB_SPAWNER, 1));
+            // Drop item with the proper entity ID
+            block.getWorld().dropItemNaturally(
+                    block.getLocation(),
+                    new ItemStack(Material.MOB_SPAWNER, 1, ((CreatureSpawner) block.getState()).getSpawnedType()
+                            .getTypeId()));
         }
     }
 
     @EventHandler
-    public void onBlockPlace(BlockPlaceEvent event) {
-        if (!event.isCancelled() && event.getBlock().getType() == Material.MOB_SPAWNER
-                && event.getBlock().hasMetadata("mob")) {
+    public void onBlockPlace(final BlockPlaceEvent event) {
+        if (!event.isCancelled() && event.getBlock().getType() == Material.MOB_SPAWNER) {
 
             Block block = event.getBlock();
             // Spawner limits as defined in the configuration file
@@ -116,9 +114,17 @@ public class MonsterBox extends JavaPlugin implements Listener {
                 event.setCancelled(true);
             }
 
-            // Set spawner's mob type based on its metadata
-            ((CreatureSpawner) block.getState()).setSpawnedType(EntityType.fromName(block.getMetadata("mob").get(0)
-                    .asString()));
+            // Set the spawned type
+            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+
+                @Override
+                public void run() {
+                    CreatureSpawner spawner = (CreatureSpawner) event.getBlockPlaced().getState();
+                    spawner.setSpawnedType(EntityType.fromId(event.getItemInHand().getData().getData()));
+                    // Update the client
+                    spawner.update();
+                }
+            });
         }
     }
 
@@ -138,7 +144,7 @@ public class MonsterBox extends JavaPlugin implements Listener {
         }
     }
 
-    public void log(String message) {
+    private void log(String message) {
         getServer().getLogger().info("[MonsterBox] " + message);
     }
 
