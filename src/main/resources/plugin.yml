@@ -6,7 +6,6 @@ commands:
       description: Sets the monster spawner you are looking at to the specified mob type.
       usage: |
        /mbox set <mob name>
-softdepend: [Spout]
 
 # SuperPerms data
 permissions:
@@ -22,7 +21,7 @@ permissions:
             monsterbox.spawn.*: true
     monsterbox.spawn.*:
         default: op
-        description: Gives access to change a mob spawner to any type
+        description: Gives access to various mob spawners
         children:
             monsterbox.spawn.pig: true
             monsterbox.spawn.chicken: true
