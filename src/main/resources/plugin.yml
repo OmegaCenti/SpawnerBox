@@ -4,36 +4,37 @@ version: 1.0
 author: aPunch
 commands:
   mbox:
-    description: Various monster spawner commands.
+    description: Various monster seter commands.
        
 permissions:
   monsterbox.*:
     default: op
     children:
-      monsterbox.set: true
-      monsterbox.spawn.*:
+      monsterbox.break: true
+      monsterbox.set.*:
         children:
-          monsterbox.spawn.pig: true
-          monsterbox.spawn.chicken: true
-          monsterbox.spawn.cow: true
-          monsterbox.spawn.sheep: true
-          monsterbox.spawn.squid: true
-          monsterbox.spawn.creeper: true
-          monsterbox.spawn.ghast: true
-          monsterbox.spawn.pigzombie: true
-          monsterbox.spawn.skeleton: true
-          monsterbox.spawn.spider: true
-          monsterbox.spawn.zombie: true
-          monsterbox.spawn.slime: true
-          monsterbox.spawn.monster: true
-          monsterbox.spawn.giant: true
-          monsterbox.spawn.wolf: true
-          monsterbox.spawn.cavespider: true
-          monsterbox.spawn.enderman: true
-          monsterbox.spawn.silverfish: true
-          monsterbox.spawn.enderdragon: true
-          monsterbox.spawn.villager: true
-          monsterbox.spawn.blaze: true
-          monsterbox.spawn.mushroomcow: true
-          monsterbox.spawn.magmacube: true
-          monsterbox.spawn.snowman: true  
+          monsterbox.set: true
+          monsterbox.set.pig: true
+          monsterbox.set.chicken: true
+          monsterbox.set.cow: true
+          monsterbox.set.sheep: true
+          monsterbox.set.squid: true
+          monsterbox.set.creeper: true
+          monsterbox.set.ghast: true
+          monsterbox.set.pigzombie: true
+          monsterbox.set.skeleton: true
+          monsterbox.set.spider: true
+          monsterbox.set.zombie: true
+          monsterbox.set.slime: true
+          monsterbox.set.monster: true
+          monsterbox.set.giant: true
+          monsterbox.set.wolf: true
+          monsterbox.set.cavespider: true
+          monsterbox.set.enderman: true
+          monsterbox.set.silverfish: true
+          monsterbox.set.enderdragon: true
+          monsterbox.set.villager: true
+          monsterbox.set.blaze: true
+          monsterbox.set.mushroomcow: true
+          monsterbox.set.magmacube: true
+          monsterbox.set.snowman: true  

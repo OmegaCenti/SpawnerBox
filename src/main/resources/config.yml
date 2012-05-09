@@ -1,0 +1,3 @@
+maximum-spawners-within-radius:
+  radius: 10
+  spawners: 15
