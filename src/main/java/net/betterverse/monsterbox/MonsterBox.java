@@ -108,9 +108,17 @@ public class MonsterBox extends JavaPlugin implements Listener {
     public void onBlockPlace(BlockPlaceEvent event) {
         if (!event.isCancelled() && event.getBlock().getType() == Material.MOB_SPAWNER
                 && event.getBlock().hasMetadata("mob")) {
-            // Set spawner's mob type based on its metadata
+
             Block block = event.getBlock();
-            ((CreatureSpawner) block).setSpawnedType(EntityType.fromName(block.getMetadata("mob").get(0).asString()));
+            // Spawner limits as defined in the configuration file
+            if (getSpawnersWithinRadiusOfBlock(block) > getConfig().getInt("maximum-spawners-within-radius.spawners")) {
+                event.getPlayer().sendMessage(ChatColor.RED + "This region has reached a maximum amount of spawners.");
+                event.setCancelled(true);
+            }
+
+            // Set spawner's mob type based on its metadata
+            ((CreatureSpawner) block.getState()).setSpawnedType(EntityType.fromName(block.getMetadata("mob").get(0)
+                    .asString()));
         }
     }
 
@@ -132,5 +140,25 @@ public class MonsterBox extends JavaPlugin implements Listener {
 
     public void log(String message) {
         getServer().getLogger().info("[MonsterBox] " + message);
+    }
+
+    private int getSpawnersWithinRadiusOfBlock(Block center) {
+        int x = center.getX();
+        int y = center.getY();
+        int z = center.getZ();
+        int radius = getConfig().getInt("maximum-spawners-within-radius.radius");
+        int totalSpawners = 0;
+        // Loop through all blocks within the radius of the center block
+        for (int xx = x - radius; xx < x + radius; xx++) {
+            for (int yy = y - radius; yy < y + radius; yy++) {
+                for (int zz = z - radius; zz < z + radius; zz++) {
+                    if (center.getWorld().getBlockAt(xx, yy, zz).getType() == Material.MOB_SPAWNER) {
+                        totalSpawners++;
+                    }
+                }
+            }
+        }
+
+        return totalSpawners;
     }
 }
