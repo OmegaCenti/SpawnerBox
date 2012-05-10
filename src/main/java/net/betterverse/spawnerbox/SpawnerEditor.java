@@ -1,4 +1,4 @@
-package net.betterverse.monsterbox;
+package net.betterverse.spawnerbox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +63,7 @@ public class SpawnerEditor {
 
                         player.sendMessage(ChatColor.GREEN + "This mob spawner now will spawn " + ChatColor.YELLOW
                                 + mob.name().toLowerCase().replace('_', ' ') + ChatColor.GREEN + ". Enter "
-                                + ChatColor.YELLOW + "/mbox set" + ChatColor.GREEN + " again to exit the editor.");
+                                + ChatColor.YELLOW + "/sb set" + ChatColor.GREEN + " again to exit the editor.");
                     } else {
                         // The player is already editing a different block
                         player.sendMessage(ChatColor.RED + "That is not the correct block!");
@@ -79,7 +79,7 @@ public class SpawnerEditor {
             if (!entity.isAlive() || entity.getEntityClass().equals(Player.class)) {
                 continue;
             }
-            if (player.hasPermission("monsterbox.spawn." + entity.name().toLowerCase().replace("_", ""))) {
+            if (player.hasPermission("spawnerbox.set." + entity.name().toLowerCase().replace("_", ""))) {
                 mobs.add(entity);
             }
         }

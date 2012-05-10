@@ -1,40 +1,40 @@
-name: MonsterBox
-main: net.betterverse.monsterbox.MonsterBox
+name: SpawnerBox
+main: net.betterverse.spawnerbox.SpawnerBox
 version: 1.0
 author: aPunch
 commands:
-  mbox:
-    description: Various monster seter commands.
+  sb:
+    description: Various SpawnerBox commands.
        
 permissions:
-  monsterbox.*:
+  spawnerbox.*:
     default: op
     children:
-      monsterbox.break: true
-      monsterbox.set.*:
+      spawnerbox.break: true
+      spawnerbox.set.*:
         children:
-          monsterbox.set: true
-          monsterbox.set.pig: true
-          monsterbox.set.chicken: true
-          monsterbox.set.cow: true
-          monsterbox.set.sheep: true
-          monsterbox.set.squid: true
-          monsterbox.set.creeper: true
-          monsterbox.set.ghast: true
-          monsterbox.set.pigzombie: true
-          monsterbox.set.skeleton: true
-          monsterbox.set.spider: true
-          monsterbox.set.zombie: true
-          monsterbox.set.slime: true
-          monsterbox.set.monster: true
-          monsterbox.set.giant: true
-          monsterbox.set.wolf: true
-          monsterbox.set.cavespider: true
-          monsterbox.set.enderman: true
-          monsterbox.set.silverfish: true
-          monsterbox.set.enderdragon: true
-          monsterbox.set.villager: true
-          monsterbox.set.blaze: true
-          monsterbox.set.mushroomcow: true
-          monsterbox.set.magmacube: true
-          monsterbox.set.snowman: true  
+          spawnerbox.set: true
+          spawnerbox.set.pig: true
+          spawnerbox.set.chicken: true
+          spawnerbox.set.cow: true
+          spawnerbox.set.sheep: true
+          spawnerbox.set.squid: true
+          spawnerbox.set.creeper: true
+          spawnerbox.set.ghast: true
+          spawnerbox.set.pigzombie: true
+          spawnerbox.set.skeleton: true
+          spawnerbox.set.spider: true
+          spawnerbox.set.zombie: true
+          spawnerbox.set.slime: true
+          spawnerbox.set.monster: true
+          spawnerbox.set.giant: true
+          spawnerbox.set.wolf: true
+          spawnerbox.set.cavespider: true
+          spawnerbox.set.enderman: true
+          spawnerbox.set.silverfish: true
+          spawnerbox.set.enderdragon: true
+          spawnerbox.set.villager: true
+          spawnerbox.set.blaze: true
+          spawnerbox.set.mushroomcow: true
+          spawnerbox.set.magmacube: true
+          spawnerbox.set.snowman: true  
