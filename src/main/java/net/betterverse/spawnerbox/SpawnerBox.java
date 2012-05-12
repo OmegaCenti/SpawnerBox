@@ -33,7 +33,7 @@ public class SpawnerBox extends JavaPlugin implements Listener {
         Player player = (Player) sender;
         if (args.length == 1 && args[0].equals("set")) {
             if (!player.hasPermission("spawnerbox.set")) {
-                player.sendMessage(ChatColor.RED + "You do not have permission.");
+                player.sendMessage(ChatColor.RED + "You do not have permission to use '/sb set'.");
                 return true;
             }
             // Toggle player's editor
@@ -47,11 +47,11 @@ public class SpawnerBox extends JavaPlugin implements Listener {
                     player.sendMessage(ChatColor.GREEN
                             + "Right-click a mob spawner to change the mob that it will spawn.");
                 } else {
-                    player.sendMessage(ChatColor.RED + "You do not have permission.");
+                    player.sendMessage(ChatColor.RED + "You do not have any available mobs to set a spawner as.");
                 }
             }
         } else {
-            player.sendMessage(ChatColor.RED + "Invalid command. /sb set");
+            player.sendMessage(ChatColor.RED + "Invalid command. '/sb set' toggles the spawner editor.");
         }
 
         return true;
