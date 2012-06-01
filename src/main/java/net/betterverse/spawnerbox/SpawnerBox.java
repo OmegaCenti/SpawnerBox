@@ -84,8 +84,8 @@ public class SpawnerBox extends JavaPlugin implements Listener {
 
         return builder.toString();
     }
-
-    @EventHandler
+//setting this event to low priority might fix the infinite spawnerbox dupe glitch on mcmmo skill use
+    @EventHandler(priority = EventPriority.LOW)
     public void onBlockBreak(BlockBreakEvent event) {
         if (!event.isCancelled() && event.getBlock().getType() == Material.MOB_SPAWNER) {
             if (!event.getPlayer().hasPermission("spawnerbox.break")) {
